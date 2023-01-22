@@ -1,0 +1,212 @@
+*, *::before, *::after{
+    padding:0;
+    margin:0;
+    box-sizing: border-box;
+}
+
+:root{
+    --darkerGreen: #23424A;
+    --lighterGreen: #136C72;
+    --purple: #87629A;
+    --greyBlack: #3A3A3A;
+    --lightBlue:#38CFD9;
+}
+
+
+html{
+    font-size:62.5%; /* Now, 1rem = 10px, but 1em still equals 16px? */ 
+    
+}
+
+body{
+    font-family: 'Roboto', sans-serif;
+    font-size:2.1rem;  /* Now, 1em = 21px (for font-size), 1rem still = 10px */
+    /* so use rem (10px baseline) for container/element, and em only for font-sizing */
+}
+
+body > *:not(header){
+    width:150rem;
+    max-width: 100%;
+    margin:0 auto;
+    display:flex;
+    
+    border:2px solid blue;
+    
+}
+
+button{
+    border-radius: 35px;
+    text-transform: uppercase;
+    border:none; 
+}
+
+button:hover{
+    cursor:pointer;
+}
+
+a{
+    text-decoration: none;
+}
+
+/* ..................... */
+
+header, main{
+    display:flex;
+    /* border:2px solid red; */
+}
+
+
+/* ........................ HEADER ..................... */
+
+header{
+   background-color:var(--lighterGreen);
+   align-items: center;
+   justify-content: center;
+   padding: 3.2rem 0; 
+}
+
+
+.hamburger__btn{
+    left:2rem;
+    border-radius:50%;
+    background-color: var(--darkerGreen);
+    padding:3.2rem 1.6rem; 
+    
+}
+
+.hamburger,
+.hamburger::before, 
+.hamburger::after{
+    border-radius: 10px;
+    height:3px;
+    width:30px;
+    background-color:white;
+} 
+
+.hamburger{
+    position:relative;
+}
+
+.hamburger::before, 
+.hamburger::after{
+    content:"";
+    position:absolute;
+    left:0;
+}
+
+.hamburger::before{
+    bottom:10px;
+}
+
+.hamburger::after{
+    top:10px;
+}
+
+/* 
+<nav>, <a>, & <button> are flex children of <header>
+Both the <button> & the <nav> were TAKEN 'OUT OF THE FLOW' of <header>, so it now centers only the 'CRL' <a>.
+
+<nav> I pos:abs <nav>, & margin reposition'd it down below <header>, but then flex - centered it from the <header> settings, and it stil centered as a flex child of <header>, along with the logo directly above it now, but also centered in <header>
+*/
+
+.hamburger__btn, nav{
+    position:absolute; 
+}
+
+/* anything with 'rem' needs to be calculated in px and divided by 10 for new rem value */
+
+
+
+
+nav{
+    margin-top:45rem;
+    width:70rem;
+    max-width:100%;
+    border:1px solid hotpink;
+    display:none;
+}
+
+/* Utility Class */
+.displayNav{
+    display:block;
+}
+
+/* <ul> */
+.nav__list{
+    list-style-type: none;
+}
+
+
+/* <li> */
+.nav__list__item{
+    text-align:center; 
+
+}
+
+.nav__list__item:last-child{
+    padding:2rem 0;
+    background-color: var(--lighterGreen);
+}
+
+
+/* <a> */
+.nav__link{
+    display:block;
+    background-color:var(--lighterGreen);
+    text-decoration: none;
+    padding:2rem 0;
+    color:white;
+    text-transform: uppercase;
+    border-bottom:2px solid white;
+}
+
+
+/* <button> */
+.signup{
+    background-color: white;
+    padding:1rem 3rem;
+    font-size: 1em;
+}
+
+
+.nav__link__btn{
+    color:var(--darkerGreen);
+}
+
+/* 
+make each list__item have a border-bottom
+
+*/
+/* ........................... HERO ..................... */
+
+.hero{
+    background-color: var(--darkerGreen);
+    color:white;
+
+}
+
+
+
+/* ........................... MAIN ..................... */
+
+main{
+    flex-direction: column;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
