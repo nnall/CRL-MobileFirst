@@ -24,15 +24,6 @@ body{
     /* so use rem (10px baseline) for container/element, and em only for font-sizing */
 }
 
-body > *:not(header){
-    width:150rem;
-    max-width: 100%;
-    margin:0 auto;
-    display:flex;
-    
-    border:2px solid blue;
-    
-}
 
 button{
     border-radius: 35px;
@@ -48,17 +39,23 @@ a{
     text-decoration: none;
 }
 
-/* ..................... */
+p{
+    font-weight: lighter;
+    line-height:1.5em;
+}
 
-header, main{
-    display:flex;
-    /* border:2px solid red; */
+h1, h2{
+    letter-spacing:-1px;
 }
 
 
 /* ........................ HEADER ..................... */
 
 header{
+   display:flex;
+   position:sticky;
+   top:0;
+   min-width:100%; 
    background-color:var(--lighterGreen);
    align-items: center;
    justify-content: center;
@@ -102,33 +99,30 @@ header{
     top:10px;
 }
 
-/* 
-<nav>, <a>, & <button> are flex children of <header>
-Both the <button> & the <nav> were TAKEN 'OUT OF THE FLOW' of <header>, so it now centers only the 'CRL' <a>.
-
-<nav> I pos:abs <nav>, & margin reposition'd it down below <header>, but then flex - centered it from the <header> settings, and it stil centered as a flex child of <header>, along with the logo directly above it now, but also centered in <header>
-*/
 
 .hamburger__btn, nav{
     position:absolute; 
 }
 
+
+.crl__link{
+    display:flex;
+}
+
+
 /* anything with 'rem' needs to be calculated in px and divided by 10 for new rem value */
-
-
-
-
 nav{
     margin-top:45rem;
     width:70rem;
     max-width:100%;
-    border:1px solid hotpink;
+    /* border:1px solid hotpink; */
     display:none;
 }
 
 /* Utility Class */
 .displayNav{
     display:block;
+
 }
 
 /* <ul> */
@@ -173,26 +167,169 @@ nav{
     color:var(--darkerGreen);
 }
 
-/* 
-make each list__item have a border-bottom
 
-*/
+/* ........................... MAIN ..................... */
+main{
+    width:150rem;
+    max-width:100%;
+    margin:0 auto;
+    display:flex;
+    flex-direction: column;
+    /* border:2px solid blue; */
+}
+
+.hero, .primary{
+    padding:3rem 2.5rem  /* side padding on container */
+}
+
 /* ........................... HERO ..................... */
 
 .hero{
     background-color: var(--darkerGreen);
     color:white;
+    /* border:2px solid hotpink; */
+    
 
 }
 
-
-
-/* ........................... MAIN ..................... */
-
-main{
-    flex-direction: column;
+section{
+    display:flex;
+    flex-direction:column;
 }
 
+.right{
+    align-items: center;
+    margin-top:3rem;
+}
+
+/* "Holy Albatross" <-- Grace suggestion, instead of 'section > *{margin-bottom:3rem}' */
+section > * + *{
+    margin-top: 3rem;
+}
+
+h1{
+    font-size:2.5em;
+    line-height:1em;
+    align-self:flex-start;
+}
+
+h1, .hero__para{
+    max-width:730px;
+}
+
+.hero__btn{
+    padding: 1.5rem 3rem;
+    font-size:inherit;
+    background-color: var(--lightBlue);
+    max-width: fit-content; /*<-- if excluded, the button stretches entire col width..? Why? */
+
+}
+.hero__btn__link{
+    color:var(--darkerGreen);
+    font-weight:bolder;
+}
+
+.hero__img{
+    width: 60rem;
+    max-width:100%;
+}
+
+/* ............................... PRIMARY ......................... */
+
+h2{
+    font-size: 2.25em;
+    color:var(--lighterGreen);
+}
+
+h3{
+    font-size: 2em;
+}
+
+.primary__right{
+    background-color:var(--lighterGreen);
+    padding:3rem;
+    color:white;
+}
+
+.primary__para__right{
+    text-align: center;
+}
+
+
+@media (min-width:770px){
+
+    header{
+        justify-content: flex-start;
+        padding:0;
+    }
+
+    .hamburger__btn{
+        display:none;        
+    }
+
+    nav{
+        /* background-color:aqua; */
+        display:block; 
+        position:static; /*<-- undo abs pos'ing*/
+        margin-top:0;
+        width:100%; 
+        padding:0 2rem;
+        background-color:none;        
+    }
+
+    .nav__list{
+        display:flex;
+        gap:2rem;
+        align-items: center;
+    }
+
+    .crl__link{
+        margin-left:2rem;
+    }
+
+    .link-one, .sign-in{
+        margin-left:auto;
+    }
+
+    .link-one, .link-two, .link-three{
+        position:relative;
+        left:8rem;
+    }
+
+    .nav__link{
+        border-bottom: none;
+    }
+
+
+    main{
+        width:170rem;
+    }
+
+
+
+
+
+    .hero, .primary{
+        display:flex;
+        justify-content: space-between;
+        gap:5rem;
+        padding:5rem 3.5rem;
+    }
+
+    .hero{
+        justify-content:space-around;
+    }
+
+    .right{
+        margin-top:0;
+    }
+
+    .hero__right{
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+    }
+}
 
 
 
